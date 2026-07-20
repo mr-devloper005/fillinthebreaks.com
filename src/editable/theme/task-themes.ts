@@ -55,11 +55,11 @@ const base = {
 export const taskThemes: Record<TaskKey, TaskTheme> = {
   article: { ...base, kicker: 'Articles', note: 'In-depth reads, guides and stories worth your time.' },
   listing: { ...base, kicker: 'Businesses', note: 'Find, compare and connect with local businesses.' },
-  classified: { ...base, kicker: 'Marketplace', note: 'Fresh offers and listings, ready to act on.' },
+  classified: { ...base, kicker: 'Marketplace', note: 'Fresh offers and listings, ready to act on.', bg: '#f4f5f7', raised: '#edf0f5', text: '#102d68', muted: '#687189', line: '#dfe3eb', accent: '#d69b00', accentSoft: '#fff5cc', onAccent: '#102d68', glow: 'rgba(101,201,229,0.22)', radius: '1rem' },
   image: { ...base, kicker: 'Photos', note: 'A visual feed of standout images and galleries.' },
   sbm: { ...base, kicker: 'Bookmarks', note: 'Curated resources and links worth saving.' },
   pdf: { ...base, kicker: 'Documents', note: 'Downloadable guides, reports and references.' },
-  profile: { ...base, kicker: 'People', note: 'Discover creators, businesses and profiles.' },
+  profile: { ...base, kicker: 'People', note: 'Discover creators, businesses and profiles.', bg: '#ffffff', raised: '#eaf8fc', text: '#102d68', muted: '#687189', line: '#dfe3eb', accent: '#2688ae', accentSoft: '#eaf8fc', onAccent: '#ffffff', glow: 'rgba(101,201,229,0.28)', radius: '1.25rem' },
 }
 
 export function getTaskTheme(task: TaskKey): TaskTheme {

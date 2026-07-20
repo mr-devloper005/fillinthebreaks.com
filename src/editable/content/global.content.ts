@@ -3,17 +3,17 @@ import { slot4BrandConfig } from '@/editable/theme/brand.config'
 export const globalContent = {
   site: {
     name: slot4BrandConfig.siteName,
-    tagline: slot4BrandConfig.tagline || 'Independent reading platform',
+    tagline: slot4BrandConfig.tagline || 'Useful local classifieds',
     domain: slot4BrandConfig.domain,
     baseUrl: slot4BrandConfig.baseUrl,
   },
   nav: {
-    tagline: 'Independent reading platform',
+    tagline: 'Useful local classifieds',
     primaryLinks: [
-      { label: 'Articles', href: '/articles' },
-      { label: 'Visuals', href: '/image-sharing' },
-      { label: 'Listings', href: '/listings' },
-      { label: 'Contact', href: '/contact' },
+      { label: 'Classified', href: '/classified' },
+      { label: 'Home', href: '/' },
+      { label: 'About', href: '/about' },
+      { label: 'Search', href: '/search' },
     ],
     actions: {
       primary: { label: 'Start exploring', href: '/' },
@@ -21,16 +21,16 @@ export const globalContent = {
     },
   },
   footer: {
-    tagline: 'Stories, resources, and discoverable posts',
-    description: 'A connected publishing surface for articles, visuals, listings, profiles, bookmarks, and downloadable resources.',
+    tagline: 'Find it. Offer it. Connect.',
+    description: 'A practical community marketplace for classifieds, services, jobs, rentals, and opportunities.',
     columns: [
       {
         title: 'Explore',
         links: [
-          { label: 'Articles', href: '/articles' },
-          { label: 'Listings', href: '/listings' },
-          { label: 'Images', href: '/image-sharing' },
-          { label: 'PDF Library', href: '/pdf' },
+          { label: 'Classified', href: '/classified' },
+          { label: 'Home', href: '/' },
+          { label: 'Search', href: '/search' },
+          { label: 'Create', href: '/create' },
         ],
       },
       {
@@ -41,7 +41,7 @@ export const globalContent = {
         ],
       },
     ],
-    bottomNote: 'Built for clean discovery and connected publishing.',
+    bottomNote: 'Built for useful local connections.',
   },
   commonLabels: {
     readMore: 'Read more',
