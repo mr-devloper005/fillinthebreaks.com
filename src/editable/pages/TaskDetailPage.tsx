@@ -258,32 +258,34 @@ function ClassifiedDetail({ post, related }: { post: SitePost; related: SitePost
   const condition = getField(post, ['condition', 'availability', 'type'])
   const phone = getField(post, ['phone', 'telephone', 'mobile'])
   const email = getField(post, ['email'])
-  const website = getField(post, ['website', 'url'])
   return (
     <>
-      <section className="mx-auto grid max-w-[var(--editable-container)] gap-10 px-6 py-14 sm:py-20 lg:grid-cols-[360px_minmax(0,1fr)] lg:px-8">
-        <aside className="lg:sticky lg:top-24 lg:self-start">
+      <section className="border-b border-[#24447c] bg-[#102d68] text-white">
+        <div className="mx-auto max-w-[var(--editable-container)] px-6 py-12 sm:py-16 lg:px-8">
           <BackLink task="classified" />
-          <div className="mt-7 rounded-[var(--tk-radius)] border border-[var(--tk-line)] bg-[var(--tk-surface)] p-7 shadow-[0_22px_60px_rgba(15,23,42,0.08)]">
+          <div className="mt-8 grid items-end gap-8 lg:grid-cols-[minmax(0,1fr)_auto]">
+            <div>
             <Kicker task="classified">Classified</Kicker>
-            <h1 className="editable-display mt-4 text-2xl font-semibold leading-tight tracking-[-0.02em]">{post.title}</h1>
-            <DetailMeta post={post} category={getField(post, ['category'])} />
-            <p className="editable-display mt-6 text-4xl font-semibold tracking-[-0.03em] text-[var(--tk-accent)]">{price || 'Open offer'}</p>
-            <div className="mt-6 space-y-2.5">
-              {condition ? <BadgeLine label="Condition" value={condition} /> : null}
-              {location ? <BadgeLine label="Location" value={location} /> : null}
+            <h1 className="editable-display mt-4 max-w-4xl text-4xl font-extrabold leading-[1.04] tracking-[-0.04em] sm:text-5xl">{post.title}</h1>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {condition ? <span className="rounded-full bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white/80">{condition}</span> : null}
+              {location ? <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-bold text-white/80"><MapPin className="h-4 w-4 text-[#65c9e5]" />{location}</span> : null}
             </div>
-            <div className="mt-7 flex flex-wrap gap-3">
+            </div>
+            <div className="rounded-2xl bg-white p-6 text-[#102d68] shadow-[0_24px_70px_rgba(0,0,0,.22)] lg:min-w-72">
+              <p className="text-[10px] font-black uppercase tracking-[.18em] text-[#2688ae]">Offer price</p>
+              <p className="editable-display mt-2 text-4xl font-black tracking-[-0.04em]">{price || 'Open offer'}</p>
+              <div className="mt-5 flex flex-wrap gap-2">
               {phone ? <a href={`tel:${phone}`} className="inline-flex items-center gap-2 rounded-full bg-[var(--tk-accent)] px-5 py-2.5 text-sm font-semibold text-[var(--tk-on-accent)] transition hover:opacity-90"><Phone className="h-4 w-4" /> Call now</a> : null}
               {email ? <a href={`mailto:${email}`} className="inline-flex items-center gap-2 rounded-full border border-[var(--tk-line)] px-5 py-2.5 text-sm font-semibold transition hover:border-[var(--tk-accent)]"><Mail className="h-4 w-4" /> Email</a> : null}
+              </div>
             </div>
           </div>
-        </aside>
-        <article className="min-w-0">
-          <ImageStrip images={images} label="Offer images" large />
-          <BodyContent post={post} />
-          <ContactAction website={website} phone={phone} email={email} />
-        </article>
+        </div>
+      </section>
+      <section className="mx-auto grid max-w-[var(--editable-container)] gap-10 px-6 py-12 sm:py-16 lg:grid-cols-[minmax(0,1fr)_320px] lg:px-8">
+        <article className="min-w-0"><ImageStrip images={images} label="Offer images" large /><BodyContent post={post} /></article>
+        <aside className="rounded-2xl border border-[var(--tk-line)] bg-white p-6 lg:sticky lg:top-24 lg:self-start"><p className="text-xs font-black uppercase tracking-[.18em] text-[#2688ae]">At a glance</p><div className="mt-5 space-y-3">{condition ? <BadgeLine label="Condition" value={condition} /> : null}{location ? <BadgeLine label="Location" value={location} /> : null}</div><div className="mt-6"><RelatedPanel task="classified" post={post} related={related.slice(0, 2)} /></div></aside>
       </section>
       <RelatedStrip task="classified" related={related} />
     </>
@@ -391,27 +393,26 @@ function ProfileDetail({ post, related }: { post: SitePost; related: SitePost[] 
   const email = getField(post, ['email'])
   return (
     <>
-      <section className="mx-auto max-w-[var(--editable-container)] px-6 py-14 sm:py-20 lg:px-8">
+      <section className="bg-[linear-gradient(135deg,#eaf8fc_0%,#ffffff_58%,#fff5cc_100%)]">
+      <div className="mx-auto max-w-[var(--editable-container)] px-6 py-14 sm:py-20 lg:px-8">
         <BackLink task="profile" />
-        <div className="mt-8 grid gap-10 lg:grid-cols-[360px_minmax(0,1fr)]">
-          <aside className="lg:sticky lg:top-24 lg:self-start">
-            <div className="rounded-[var(--tk-radius)] border border-[var(--tk-line)] bg-[var(--tk-surface)] p-8 text-center shadow-[0_22px_60px_rgba(15,23,42,0.08)]">
-              <div className="mx-auto flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border border-[var(--tk-line)] bg-[var(--tk-raised)]">
+        <div className="mt-10 grid items-center gap-10 lg:grid-cols-[300px_minmax(0,1fr)]">
+          <div className="relative mx-auto">
+              <div className="absolute -inset-5 rounded-full border-2 border-dashed border-[#65c9e5]" />
+              <div className="relative flex h-64 w-64 items-center justify-center overflow-hidden rounded-full border-[8px] border-white bg-[var(--tk-raised)] shadow-[0_24px_70px_rgba(16,45,104,.18)]">
                 {images[0] ? <img src={images[0]} alt="" className="h-full w-full object-cover" /> : <UserRound className="h-14 w-14 text-[var(--tk-muted)]" />}
               </div>
-              <h1 className="editable-display mt-6 text-2xl font-semibold tracking-[-0.02em]">{post.title}</h1>
-              {role ? <p className="mt-2 text-xs font-medium uppercase tracking-[0.16em] text-[var(--tk-accent)]">{role}</p> : null}
-              <DetailMeta post={post} center />
-              <ContactAction website={website} email={email} bare />
-            </div>
-          </aside>
-          <article className="min-w-0">
+          </div>
+          <div className="min-w-0">
             <Kicker task="profile">Profile</Kicker>
-            <BodyContent post={post} />
-            <ImageStrip images={images.slice(1)} label="Gallery" />
-          </article>
+            <h1 className="editable-display mt-4 text-4xl font-extrabold leading-[1.02] tracking-[-0.045em] sm:text-6xl">{post.title}</h1>
+            {role ? <p className="mt-4 text-sm font-black uppercase tracking-[0.18em] text-[#2688ae]">{role}</p> : null}
+            {leadText(post) ? <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--tk-muted)]">{leadText(post)}</p> : null}
+            <ContactAction website={website} email={email} bare />
+          </div>
         </div>
-      </section>
+      </div></section>
+      <section className="mx-auto grid max-w-[var(--editable-container)] gap-12 px-6 py-14 sm:py-20 lg:grid-cols-[minmax(0,1fr)_300px] lg:px-8"><article><p className="text-xs font-black uppercase tracking-[.2em] text-[#2688ae]">About</p><BodyContent post={post} /><ImageStrip images={images.slice(1)} label="Gallery" /></article><aside className="lg:sticky lg:top-24 lg:self-start"><RelatedPanel task="profile" post={post} related={related} /></aside></section>
       <RelatedStrip task="profile" related={related} />
     </>
   )
@@ -494,7 +495,7 @@ function BadgeLine({ label, value }: { label: string; value: string }) {
   )
 }
 
-function RelatedPanel({ task, post, related }: { task: TaskKey; post: SitePost; related: SitePost[] }) {
+function RelatedPanel({ task, post: _post, related }: { task: TaskKey; post: SitePost; related: SitePost[] }) {
   const taskConfig = getTaskConfig(task)
   return (
     <div className="space-y-6">
@@ -567,4 +568,3 @@ function RelatedCard({ task, post, grid = false }: { task: TaskKey; post: SitePo
     </Link>
   )
 }
-
